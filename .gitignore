@@ -1,0 +1,94 @@
+# ----------------------
+# Python
+# ----------------------
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+
+# virtual environment
+venv/
+env/
+ENV/
+.venv/
+.python-version
+
+# pip
+pip-log.txt
+pip-delete-this-directory.txt
+
+# ----------------------
+# Jupyter Notebook
+# ----------------------
+.ipynb_checkpoints
+
+# ----------------------
+# Environment variables
+# ----------------------
+.env
+.env.*
+*.env
+
+# ----------------------
+# Streamlit
+# ----------------------
+.streamlit/secrets.toml
+
+# ----------------------
+# Logs
+# ----------------------
+*.log
+logs/
+
+# ----------------------
+# OS files
+# ----------------------
+.DS_Store
+Thumbs.db
+
+# ----------------------
+# VS Code
+# ----------------------
+.vscode/
+
+# ----------------------
+# Model files (large)
+# ----------------------
+*.h5
+*.pkl
+*.joblib
+*.pt
+*.pth
+*.ckpt
+
+# ----------------------
+# Data files (optional)
+# ----------------------
+data/
+*.csv
+*.xlsx
+
+# ----------------------
+# Docker
+# ----------------------
+*.tar
+
+# ----------------------
+# Build files
+# ----------------------
+build/
+dist/
+*.egg-info/
+
+# ----------------------
+# Secrets / API keys
+# ----------------------
+config.yaml
+secrets.yaml
+credentials.json
+
+# ----------------------
+# Temporary files
+# ----------------------
+*.tmp
+*.temp

@@ -1,0 +1,64 @@
+version: "3.9"
+
+services:
+  # ── Main Streamlit Dashboard ──────────────────────────────────────────────
+  dashboard:
+    build:
+      context: ..
+      dockerfile: docker/Dockerfile
+    image: medical-ai-system:latest
+    container_name: medical-ai-dashboard
+    ports:
+      - "8501:8501"
+    volumes:
+      # Mount data directory (read-only; images stay on host)
+      - type: bind
+        source: ../data
+        target: /app/data
+        read_only: true
+      # Mount models directory (read-write; save checkpoints)
+      - type: bind
+        source: ../models
+        target: /app/models
+    environment:
+      - PYTHONUNBUFFERED=1
+    restart: unless-stopped
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:8501/_stcore/health"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+      start_period: 60s
+
+  # ── Federated Training Runner (one-shot) ──────────────────────────────────
+  federated-trainer:
+    build:
+      context: ..
+      dockerfile: docker/Dockerfile
+    image: medical-ai-system:latest
+    container_name: medical-ai-trainer
+    volumes:
+      - type: bind
+        source: ../data
+        target: /app/data
+        read_only: true
+      - type: bind
+        source: ../models
+        target: /app/models
+    environment:
+      - PYTHONUNBUFFERED=1
+    # Override CMD to run federated training
+    command: >
+      python run_federated.py
+        --csv /app/data/nih_xray/multilabel_dataset.csv
+        --image-dirs /app/data/nih_xray/images_1
+                     /app/data/nih_xray/images_2
+        --num-hospitals 3
+        --num-rounds 10
+        --local-epochs 3
+        --batch-size 32
+        --save-dir /app/models/federated
+    # Do not restart automatically; runs once and exits
+    restart: "no"
+    profiles:
+      - training
