@@ -45,9 +45,14 @@ class ResNetChestXray(nn.Module):
             return torch.sigmoid(self.forward(x))
 
     def get_feature_extractor(self):
+        """Return the backbone (useful for GradCAM hook registration)."""
         return self.backbone
 
     def unfreeze_layers(self, layer_names: Optional[list] = None) -> None:
+        """
+        Unfreeze specific backbone layers for fine-tuning.
+        If layer_names is None, unfreezes all layers.
+        """
         if layer_names is None:
             for param in self.backbone.parameters():
                 param.requires_grad = True
@@ -65,6 +70,12 @@ def build_resnet(
     freeze_backbone: bool = False,
     checkpoint_path: Optional[str] = None,
 ) -> ResNetChestXray:
+    """
+    Factory function: build and optionally load weights.
+
+    Args:
+        checkpoint_path: path to a saved state_dict (.pth file).
+    """
     model = ResNetChestXray(
         num_classes      = num_classes,
         pretrained       = pretrained,

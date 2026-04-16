@@ -1,0 +1,52 @@
+[
+  {
+    "timestamp": "2026-04-16T04:20:48.210280Z",
+    "hospital_id": "Hospital_A",
+    "model_used": "DenseNet-121 + SE (Federated)",
+    "urgency": "urgent",
+    "probabilities": {
+      "Atelectasis": 0.5048,
+      "Cardiomegaly": 0.4873,
+      "Effusion": 0.4733,
+      "Infiltration": 0.4988,
+      "Mass": 0.4901,
+      "Nodule": 0.5206,
+      "Pneumonia": 0.5084,
+      "Pneumothorax": 0.4879,
+      "Consolidation": 0.5007,
+      "Edema": 0.5163,
+      "Emphysema": 0.5258,
+      "Fibrosis": 0.4776,
+      "Pleural_Thickening": 0.5093,
+      "Hernia": 0.4839
+    },
+    "detected_diseases": [
+      {
+        "name": "Emphysema",
+        "probability": 0.5258,
+        "severity": "moderate"
+      },
+      {
+        "name": "Nodule",
+        "probability": 0.5206,
+        "severity": "low"
+      },
+      {
+        "name": "Edema",
+        "probability": 0.5163,
+        "severity": "low"
+      },
+      {
+        "name": "Pleural_Thickening",
+        "probability": 0.5093,
+        "severity": "moderate"
+      },
+      {
+        "name": "Pneumonia",
+        "probability": 0.5084,
+        "severity": "high"
+      }
+    ],
+    "notes_summary": ""
+  }
+]

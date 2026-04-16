@@ -27,6 +27,7 @@ class ResNetChestXray(nn.Module):
         backbone.fc = nn.Identity()
         self.backbone = backbone
 
+        # ── Custom multi-label head ────────────────────────────────────────
         self.head = nn.Sequential(
             nn.Dropout(p=dropout_p),
             nn.Linear(in_features, 512),
@@ -36,18 +37,30 @@ class ResNetChestXray(nn.Module):
         )
 
     def forward(self, x: torch.Tensor) -> torch.Tensor:
+        """
+        Args:
+            x: (B, 3, H, W)
+        Returns:
+            logits: (B, num_classes)  — raw logits, apply sigmoid for probabilities
+        """
         features = self.backbone(x)   # (B, 2048)
         logits   = self.head(features) # (B, 14)
         return logits
 
     def predict_proba(self, x: torch.Tensor) -> torch.Tensor:
+        """Return sigmoid probabilities for inference."""
         with torch.no_grad():
             return torch.sigmoid(self.forward(x))
 
     def get_feature_extractor(self):
+        """Return the backbone (useful for GradCAM hook registration)."""
         return self.backbone
 
     def unfreeze_layers(self, layer_names: Optional[list] = None) -> None:
+        """
+        Unfreeze specific backbone layers for fine-tuning.
+        If layer_names is None, unfreezes all layers.
+        """
         if layer_names is None:
             for param in self.backbone.parameters():
                 param.requires_grad = True
@@ -65,6 +78,12 @@ def build_resnet(
     freeze_backbone: bool = False,
     checkpoint_path: Optional[str] = None,
 ) -> ResNetChestXray:
+    """
+    Factory function: build and optionally load weights.
+
+    Args:
+        checkpoint_path: path to a saved state_dict (.pth file).
+    """
     model = ResNetChestXray(
         num_classes      = num_classes,
         pretrained       = pretrained,

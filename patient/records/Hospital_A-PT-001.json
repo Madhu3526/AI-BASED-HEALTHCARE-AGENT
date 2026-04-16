@@ -1,0 +1,371 @@
+[
+  {
+    "timestamp": "2026-04-16T04:17:48.513941Z",
+    "hospital_id": "Hospital_A",
+    "model_used": "DenseNet-121 + SE (Federated)",
+    "urgency": "urgent",
+    "probabilities": {
+      "Atelectasis": 0.5065,
+      "Cardiomegaly": 0.4843,
+      "Effusion": 0.4749,
+      "Infiltration": 0.4984,
+      "Mass": 0.4921,
+      "Nodule": 0.5252,
+      "Pneumonia": 0.5084,
+      "Pneumothorax": 0.4858,
+      "Consolidation": 0.5001,
+      "Edema": 0.5222,
+      "Emphysema": 0.509,
+      "Fibrosis": 0.4749,
+      "Pleural_Thickening": 0.509,
+      "Hernia": 0.4886
+    },
+    "detected_diseases": [
+      {
+        "name": "Nodule",
+        "probability": 0.5252,
+        "severity": "low"
+      },
+      {
+        "name": "Edema",
+        "probability": 0.5222,
+        "severity": "low"
+      },
+      {
+        "name": "Emphysema",
+        "probability": 0.509,
+        "severity": "moderate"
+      },
+      {
+        "name": "Pleural_Thickening",
+        "probability": 0.509,
+        "severity": "moderate"
+      },
+      {
+        "name": "Pneumonia",
+        "probability": 0.5084,
+        "severity": "high"
+      }
+    ],
+    "notes_summary": ""
+  },
+  {
+    "timestamp": "2026-04-16T04:17:59.976941Z",
+    "hospital_id": "Hospital_A",
+    "model_used": "DenseNet-121 + SE (Federated)",
+    "urgency": "urgent",
+    "probabilities": {
+      "Atelectasis": 0.5505,
+      "Cardiomegaly": 0.5162,
+      "Effusion": 0.4909,
+      "Infiltration": 0.543,
+      "Mass": 0.5965,
+      "Nodule": 0.5562,
+      "Pneumonia": 0.6133,
+      "Pneumothorax": 0.5012,
+      "Consolidation": 0.5413,
+      "Edema": 0.5218,
+      "Emphysema": 0.614,
+      "Fibrosis": 0.4752,
+      "Pleural_Thickening": 0.5373,
+      "Hernia": 0.4873
+    },
+    "detected_diseases": [
+      {
+        "name": "Emphysema",
+        "probability": 0.614,
+        "severity": "moderate"
+      },
+      {
+        "name": "Pneumonia",
+        "probability": 0.6133,
+        "severity": "high"
+      },
+      {
+        "name": "Mass",
+        "probability": 0.5965,
+        "severity": "high"
+      },
+      {
+        "name": "Nodule",
+        "probability": 0.5562,
+        "severity": "low"
+      },
+      {
+        "name": "Atelectasis",
+        "probability": 0.5505,
+        "severity": "low"
+      }
+    ],
+    "notes_summary": "55M, ex-smoker (20 pack-years). Presenting with 3-week cough and haemoptysis.\nVitals: HR: 92 bpm, SpO2: 95%, Temp: 37.2C, BP: 138/88.\nHx: COPD, hypertension. No fever. No chest pain.\nMedications: Salb"
+  },
+  {
+    "timestamp": "2026-04-16T04:18:25.518206Z",
+    "hospital_id": "Hospital_A",
+    "model_used": "DenseNet-121 + SE (Federated)",
+    "urgency": "urgent",
+    "probabilities": {
+      "Atelectasis": 0.5431,
+      "Cardiomegaly": 0.552,
+      "Effusion": 0.5382,
+      "Infiltration": 0.5417,
+      "Mass": 0.6156,
+      "Nodule": 0.5348,
+      "Pneumonia": 0.5988,
+      "Pneumothorax": 0.5128,
+      "Consolidation": 0.5272,
+      "Edema": 0.5316,
+      "Emphysema": 0.5996,
+      "Fibrosis": 0.5085,
+      "Pleural_Thickening": 0.5174,
+      "Hernia": 0.4857
+    },
+    "detected_diseases": [
+      {
+        "name": "Mass",
+        "probability": 0.6156,
+        "severity": "high"
+      },
+      {
+        "name": "Emphysema",
+        "probability": 0.5996,
+        "severity": "moderate"
+      },
+      {
+        "name": "Pneumonia",
+        "probability": 0.5988,
+        "severity": "high"
+      },
+      {
+        "name": "Cardiomegaly",
+        "probability": 0.552,
+        "severity": "moderate"
+      },
+      {
+        "name": "Atelectasis",
+        "probability": 0.5431,
+        "severity": "low"
+      }
+    ],
+    "notes_summary": "55M, ex-smoker (20 pack-years). Presenting with 3-week cough and haemoptysis.\nVitals: HR: 92 bpm, SpO2: 95%, Temp: 37.2C, BP: 138/88.\nHx: COPD, hypertension. No fever. No chest pain.\nMedications: Salb"
+  },
+  {
+    "timestamp": "2026-04-16T04:18:30.827458Z",
+    "hospital_id": "Hospital_A",
+    "model_used": "ResNet-50 (Federated)",
+    "urgency": "routine",
+    "probabilities": {
+      "Atelectasis": 0.1275,
+      "Cardiomegaly": 0.0585,
+      "Effusion": 0.0484,
+      "Infiltration": 0.3371,
+      "Mass": 0.1828,
+      "Nodule": 0.3754,
+      "Pneumonia": 0.2995,
+      "Pneumothorax": 0.1808,
+      "Consolidation": 0.1387,
+      "Edema": 0.0034,
+      "Emphysema": 0.1596,
+      "Fibrosis": 0.2294,
+      "Pleural_Thickening": 0.3193,
+      "Hernia": 0.0085
+    },
+    "detected_diseases": [],
+    "notes_summary": "55M, ex-smoker (20 pack-years). Presenting with 3-week cough and haemoptysis.\nVitals: HR: 92 bpm, SpO2: 95%, Temp: 37.2C, BP: 138/88.\nHx: COPD, hypertension. No fever. No chest pain.\nMedications: Salb"
+  },
+  {
+    "timestamp": "2026-04-16T05:39:14.635051Z",
+    "hospital_id": "Hospital_A",
+    "model_used": "Ensemble (ResNet-50 + DenseNet-121 + ViT) (Federated)",
+    "urgency": "routine",
+    "probabilities": {
+      "Atelectasis": 0.5023,
+      "Cardiomegaly": 0.501,
+      "Effusion": 0.4816,
+      "Infiltration": 0.4956,
+      "Mass": 0.5001,
+      "Nodule": 0.5161,
+      "Pneumonia": 0.4815,
+      "Pneumothorax": 0.4989,
+      "Consolidation": 0.4994,
+      "Edema": 0.5075,
+      "Emphysema": 0.5393,
+      "Fibrosis": 0.4943,
+      "Pleural_Thickening": 0.5227,
+      "Hernia": 0.5064
+    },
+    "detected_diseases": [
+      {
+        "name": "Emphysema",
+        "probability": 0.5393,
+        "severity": "moderate"
+      },
+      {
+        "name": "Pleural_Thickening",
+        "probability": 0.5227,
+        "severity": "moderate"
+      },
+      {
+        "name": "Nodule",
+        "probability": 0.5161,
+        "severity": "low"
+      },
+      {
+        "name": "Edema",
+        "probability": 0.5075,
+        "severity": "low"
+      },
+      {
+        "name": "Hernia",
+        "probability": 0.5064,
+        "severity": "low"
+      }
+    ],
+    "notes_summary": ""
+  },
+  {
+    "timestamp": "2026-04-16T05:53:48.286471Z",
+    "hospital_id": "Hospital_A",
+    "model_used": "ResNet-50 (Federated)",
+    "urgency": "routine",
+    "probabilities": {
+      "Atelectasis": 0.1728,
+      "Cardiomegaly": 0.0608,
+      "Effusion": 0.0909,
+      "Infiltration": 0.3057,
+      "Mass": 0.1904,
+      "Nodule": 0.4352,
+      "Pneumonia": 0.2362,
+      "Pneumothorax": 0.3797,
+      "Consolidation": 0.127,
+      "Edema": 0.0091,
+      "Emphysema": 0.2047,
+      "Fibrosis": 0.4491,
+      "Pleural_Thickening": 0.4926,
+      "Hernia": 0.0422
+    },
+    "detected_diseases": [
+      {
+        "name": "Pleural_Thickening",
+        "probability": 0.4926,
+        "severity": "moderate"
+      }
+    ],
+    "notes_summary": ""
+  },
+  {
+    "timestamp": "2026-04-16T05:55:50.388252Z",
+    "hospital_id": "Hospital_A",
+    "model_used": "ResNet-50 (Federated)",
+    "urgency": "routine",
+    "probabilities": {
+      "Atelectasis": 0.1728,
+      "Cardiomegaly": 0.0608,
+      "Effusion": 0.0909,
+      "Infiltration": 0.3057,
+      "Mass": 0.1904,
+      "Nodule": 0.4352,
+      "Pneumonia": 0.2362,
+      "Pneumothorax": 0.3797,
+      "Consolidation": 0.127,
+      "Edema": 0.0091,
+      "Emphysema": 0.2047,
+      "Fibrosis": 0.4491,
+      "Pleural_Thickening": 0.4926,
+      "Hernia": 0.0422
+    },
+    "detected_diseases": [
+      {
+        "name": "Pleural_Thickening",
+        "probability": 0.4926,
+        "severity": "moderate"
+      }
+    ],
+    "notes_summary": ""
+  },
+  {
+    "timestamp": "2026-04-16T06:05:25.753531Z",
+    "hospital_id": "Hospital_A",
+    "model_used": "ResNet-50 (Federated)",
+    "urgency": "routine",
+    "probabilities": {
+      "Atelectasis": 0.2178,
+      "Cardiomegaly": 0.0908,
+      "Effusion": 0.1059,
+      "Infiltration": 0.3507,
+      "Mass": 0.2954,
+      "Nodule": 0.4652,
+      "Pneumonia": 0.3412,
+      "Pneumothorax": 0.3947,
+      "Consolidation": 0.172,
+      "Edema": 0.0091,
+      "Emphysema": 0.3097,
+      "Fibrosis": 0.4491,
+      "Pleural_Thickening": 0.5226,
+      "Hernia": 0.0422
+    },
+    "detected_diseases": [
+      {
+        "name": "Pleural_Thickening",
+        "probability": 0.5226,
+        "severity": "moderate"
+      },
+      {
+        "name": "Nodule",
+        "probability": 0.4652,
+        "severity": "low"
+      }
+    ],
+    "notes_summary": "55M, ex-smoker (20 pack-years). Presenting with 3-week cough and haemoptysis.\nVitals: HR: 92 bpm, SpO2: 95%, Temp: 37.2C, BP: 138/88.\nHx: COPD, hypertension. No fever. No chest pain.\nMedications: Salb"
+  },
+  {
+    "timestamp": "2026-04-16T06:16:48.044533Z",
+    "hospital_id": "Hospital_A",
+    "model_used": "ResNet-50 (Federated)",
+    "urgency": "urgent",
+    "probabilities": {
+      "Atelectasis": 0.4531,
+      "Cardiomegaly": 0.3624,
+      "Effusion": 0.357,
+      "Infiltration": 0.5136,
+      "Mass": 0.5395,
+      "Nodule": 0.5023,
+      "Pneumonia": 0.5569,
+      "Pneumothorax": 0.4285,
+      "Consolidation": 0.455,
+      "Edema": 0.2022,
+      "Emphysema": 0.4477,
+      "Fibrosis": 0.4591,
+      "Pleural_Thickening": 0.5111,
+      "Hernia": 0.2454
+    },
+    "detected_diseases": [
+      {
+        "name": "Pneumonia",
+        "probability": 0.5569,
+        "severity": "high"
+      },
+      {
+        "name": "Mass",
+        "probability": 0.5395,
+        "severity": "high"
+      },
+      {
+        "name": "Infiltration",
+        "probability": 0.5136,
+        "severity": "low"
+      },
+      {
+        "name": "Pleural_Thickening",
+        "probability": 0.5111,
+        "severity": "moderate"
+      },
+      {
+        "name": "Nodule",
+        "probability": 0.5023,
+        "severity": "low"
+      }
+    ],
+    "notes_summary": "55M, ex-smoker (20 pack-years). Presenting with 3-week cough and haemoptysis.\nVitals: HR: 92 bpm, SpO2: 95%, Temp: 37.2C, BP: 138/88.\nHx: COPD, hypertension. No fever. No chest pain.\nMedications: Salb"
+  }
+]

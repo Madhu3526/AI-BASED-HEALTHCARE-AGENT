@@ -65,6 +65,8 @@ def build_resnet(
     freeze_backbone: bool = False,
     checkpoint_path: Optional[str] = None,
 ) -> ResNetChestXray:
+   heckpoint_path: path to a saved state_dict (.pth file).
+    """
     model = ResNetChestXray(
         num_classes      = num_classes,
         pretrained       = pretrained,

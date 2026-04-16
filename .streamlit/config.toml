@@ -1,0 +1,10 @@
+[server]
+# torch.classes.__path__ is patched in app.py so the watcher can run normally.
+fileWatcherType = "auto"
+
+[theme]
+base = "dark"
+backgroundColor = "#0e1117"
+secondaryBackgroundColor = "#1e2329"
+primaryColor = "#4fc3f7"
+textColor = "#cfd8dc"

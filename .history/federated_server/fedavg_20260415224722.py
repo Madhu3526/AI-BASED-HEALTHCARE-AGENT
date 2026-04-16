@@ -1,3 +1,12 @@
+"""
+Federated Averaging (FedAvg) Server
+McMahan et al., "Communication-Efficient Learning of Deep Networks
+from Decentralized Data" (2017).
+
+Aggregates model weights from participating hospital nodes using
+sample-size–weighted averaging, then broadcasts the global model.
+"""
+
 import copy
 import os
 from typing import Dict, List, Optional, Tuple

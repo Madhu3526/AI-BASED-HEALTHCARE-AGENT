@@ -30,6 +30,7 @@ ROOT = Path(__file__).resolve().parent
 sys.path.insert(0, str(ROOT))
 
 from models.resnet_model import build_resnet
+from models.densenet_model import build_densenet
 from models.vit_model import build_vit
 from data.dataset import DEFAULT_CSV, DEFAULT_IMG_DIRS
 from hospital_nodes.local_training import HospitalNode, train_local_model
@@ -53,11 +54,11 @@ def parse_args():
                         default=DEFAULT_IMG_DIRS,
                         help="Flat image directories (images_1, images_2 ...)")
     parser.add_argument("--num-hospitals", type=int,   default=3,     help="Number of hospital nodes")
-    parser.add_argument("--num-rounds",    type=int,   default=10,    help="Federated communication rounds")
-    parser.add_argument("--local-epochs",  type=int,   default=3,     help="Local epochs per round")
+    parser.add_argument("--num-rounds",    type=int,   default=10,    help="Federated communication rounds (10+ recommended)")
+    parser.add_argument("--local-epochs",  type=int,   default=5,     help="Local epochs per round (5 gives better convergence)")
     parser.add_argument("--batch-size",    type=int,   default=32)
     parser.add_argument("--lr",            type=float, default=1e-4)
-    parser.add_argument("--model",         choices=["resnet", "vit"], default="resnet")
+    parser.add_argument("--model",         choices=["resnet", "densenet", "vit"], default="resnet")
     parser.add_argument("--save-dir",      default="models/federated")
     parser.add_argument("--use-dp",        action="store_true", help="Enable differential privacy")
     parser.add_argument("--dp-noise",      type=float, default=1.1)
@@ -71,6 +72,8 @@ def parse_args():
 def build_model(model_type: str) -> nn.Module:
     if model_type == "resnet":
         return build_resnet(num_classes=14, pretrained=True)
+    if model_type == "densenet":
+        return build_densenet(num_classes=14, pretrained=True)
     return build_vit(num_classes=14, pretrained=True, unfreeze_last_n=4)
 
 
@@ -93,7 +96,9 @@ def main():
     server       = FederatedServer(global_model, save_dir=args.save_dir)
 
     # ── Hospital nodes ─────────────────────────────────────────────────────
-    # Each hospital gets a unique random seed so data splits are non-overlapping
+    # Each hospital gets the full --subset fraction of the dataset but with a
+    # unique seed so its train/val shuffle differs, simulating data heterogeneity
+    # without starving any node of training samples.
     nodes = []
     for i in range(args.num_hospitals):
         node = HospitalNode(
@@ -104,9 +109,9 @@ def main():
             batch_size       = args.batch_size,
             learning_rate    = args.lr,
             num_workers      = args.num_workers,
-            subset_fraction  = args.subset / args.num_hospitals,
+            subset_fraction  = args.subset,   # full fraction per hospital (not divided)
             device           = device,
-            seed             = i * 100,
+            seed             = i * 100,       # different seed → different shuffle/split
         )
         nodes.append(node)
 
@@ -141,6 +146,7 @@ def main():
                     dp_trainer.train_epoch(dp_criterion)
 
                 metrics = node._validate()
+                metrics["hospital_id"] = node.hospital_id
                 print(f"  [{node.hospital_id}] DP: ε={dp_trainer.epsilon:.4f} "
                       f"| val_auc={metrics.get('roc_auc_macro', 0):.4f}")
                 w = node.get_weights()
@@ -150,6 +156,7 @@ def main():
                 w, n, metrics = train_local_model(
                     node, global_weights, local_epochs=args.local_epochs
                 )
+                metrics["hospital_id"] = node.hospital_id
                 updates.append((w, n, metrics))
 
         server.aggregate(updates)

@@ -1,3 +1,9 @@
+"""
+Hospital Node — Local Model Training
+Each hospital trains independently on its own data partition and returns
+updated model weights (no raw data leaves the hospital).
+"""
+
 import copy
 import os
 from typing import Dict, List, Optional, Tuple
@@ -41,6 +47,14 @@ def _compute_metrics(
 
 # ── Hospital Node ──────────────────────────────────────────────────────────────
 class HospitalNode:
+    """
+    Represents a single hospital participating in federated learning.
+
+    Each node:
+      - holds its own local DataLoader
+      - maintains a local copy of the global model
+      - trains for `local_epochs` and returns updated weights
+    """
 
     def __init__(
         self,
